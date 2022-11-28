@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+  input{font-size: large;border-radius: 8px;
+    background: gold;color: blue;margin: 0 auto;
+    display: block;padding: 10px 25px;
+  }
+</style>
+<body>
+
+<div id="dialog" title="Welcome to page!">
+  <form method='post' action='test.php'>
+    <input type='text' name='renameFile'>
+    <input type='submit' value='Close'>
+  </form>
+</div>
+<div><input type='button' value='Open'></div>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+<script>
+  var dialog = $("#dialog").dialog({autoOpen: false});
+  $("input[type=button]").click(function ()
+  {
+    dialog.dialog( "open" );
+  });
+</script>
+
+
+</body>
+</html>

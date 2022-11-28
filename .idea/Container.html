@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Container</title>
+    <script type="text/javascript">
+
+        function look(type)
+        {
+            param = document.getElementById(type)
+            param.style.display = param.style.display == "block" ? "none" : "block"
+        }
+    </script>
+</head>
+<style>
+
+</style>
+
+<body>
+<form>
+
+        <div id="div_1" name="div_11" style="display:block">
+            <h4 ><a href="javascript:look('div1');">This PC:</a></h4>
+            <div id="div1" style="display:block">
+                <ol>
+                    <li type="circle" id="li_1" name="li_11" style="display:block">
+                        <a href="javascript:look('li1');">Local Disk C:</a></li>
+                    <li id="li1" style="display:block">
+                    <ol>
+                        <li type="square">Program Files</li>
+                        <li type="square">Users</li>
+                        <li type="square">Windows</li>
+                    </ol>
+                    <li type="circle" id="li_2" name="li_21" style="display:block">
+                    <a href="javascript:look('li2');">Local Disk D:</a></li>
+                    <li id="li2" style="display:block">
+                    <ol>
+                        <li type="square">New Folder1</li>
+                        <li type="square">New Folder2</li>
+                        <li type="square">New Folder3</li>
+                    </ol>
+                    <li type="circle" id="li_3" name="li_31" style="display:block">
+                    <a href="javascript:look('li3');">Local Disk E:</a></li>
+                    <li id="li3" style="display:block">
+                </ol>
+            </div></div>
+    </form>
+    </body>
+</form>
+
+</body>
+</html>

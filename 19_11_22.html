@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.min.js" integrity="sha512-tQYZBKe34uzoeOjY9jr3MX7R/mo7n25vnqbnrkskGr4D6YOoPYSpyafUAzQVjV6xAozAqUFIEFsCO4z8mnVBXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script src="path/to/Chart.min.js"></script>
+
 <style>
     table{padding-top: 10px;padding-left: 400px}
     h3{text-align: center}
 </style>
 </head>
 <body>
-<h3>A list of employees</h3>
+<h3>A list of employers</h3>
 <table id="employers">
     <tr><td>Name</td><td>Position</td><td>Salary</td><td>Start</td><td>Office</td><td>Extn</td><tr>
 </table>
+<canvas id="myCanvas" width="600" height="400"></canvas>
 <script type="text/javascript"  >
+let names=new Array();
+let salaries=new Array();
     $(function ()
     {
         $.getJSON('data.json', function(data)
@@ -26,9 +33,77 @@
                         + data.data[i].office + '</td><td>' + data.data[i].extn + '</td><tr>');
 
                 }
+            for (let i = 0; i < data.data.length; i++)
+             {
+                names.add(data.data[i].name);
+                salaries.add(data.data[i].salary);
+            }
 
         })
     })
+
+  let ctx = document.getElementById("myCanvas").getContext('2d');
+      new Chart(ctx,
+         {
+             type: 'bar',
+             data:
+                 {
+                     labels: names, // Наши метки
+                     datasets:
+                         [{
+                             label: "Salary", // Название рядов
+                             data: salaries, // Значения
+                             backgroundColor: [ // Задаем произвольные цвета (0.2 - прозрачность)
+                                 'rgba(255, 99, 132, 0.7)',
+                                 'rgba(54, 162, 235, 0.7)',
+                                 'rgba(255, 206, 86, 0.7)',
+                                 'rgba(75, 192, 192, 0.7)'
+                             ],
+                             borderColor: [ // Добавляем произвольный цвет обводки
+                                 'rgba(255,99,132, 1)',
+                                 'rgba(54, 162, 235, 1)',
+                                 'rgba(255, 206, 86, 1)',
+                                 'rgba(75, 192, 192, 1)'
+                             ],
+                             borderWidth: 1 // Задаем ширину обводки секций
+                         }]
+                 }
+
+ })
+
+
+
+        //     options: {
+        //         responsive: true, // Даем Chart.js указание реагировать правильно.
+        //         maintainAspectRatio: false, // Добавляем эту строку, чтобы избежать переключения на полноразмерный вид (высоту/ширину)
+        //         scales: {
+        //             yAxes: [{
+        //                 ticks: {
+        //                     beginAtZero: true,
+        //                 }
+        //             }]
+        //         },
+        //         plugins: {
+        //             datalabels: {
+        //                 anchor: 'end',    /* Возможные варианты:
+        //                     'center' (по умолчанию): центр элемента
+        //                     'start': нижняя граница элемента
+        //                     'end': верхняя граница элемента
+        //                     */
+        //                 align: 'top',
+        //                 formatter: Math.round,
+        //                 font: {
+        //                     weight: 'bold', // Жирность
+        //                     size: '20' // Размер
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+        // return myChart;
+
+
+
 </script>
 </body>
 </html>
