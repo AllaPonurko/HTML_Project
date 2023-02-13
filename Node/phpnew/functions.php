@@ -49,6 +49,29 @@ function countOfDays($n)
         case "12":echo "Days in the month 31" . "<br/>";break;
         default: "Data is not correct" . "<br/>";
     };
-
+}
+function is_leap_year($year)
+{
+    if($year%4==0&&$year%100==0&&$year%400==0)
+        echo "<span style={'color:red;'}>$year"." is leap year"."<br/>";
+    else echo "<span style={'color:red;'}>$year"." is not leap year"."<br/>";
+}
+function painting($x,$y)
+{header ('Content-Type: image/png');
+    $screen_width=900;
+    $screen_height=750;
+   $width=150;
+   $height=70;
+   $x1=$x+$width;
+   $y1=$y+$height;
+    if($x<$screen_width&&$y<$screen_height&&$x1<$screen_width&&$y1<$screen_height)
+    {
+        $img = imagecreatetruecolor($width, $height);
+        $green = imagecolorallocate($img, 0, 255, 0);
+        imagerefillrectangle($img, $x, $y, $x1, $y1, $green);
+        imagepng($img);
+        imagedestroy($img);
+    }
+    else echo "Incorrect coordinates";
 
 }
