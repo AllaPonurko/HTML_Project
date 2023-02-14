@@ -75,3 +75,13 @@ function painting($x,$y)
     else echo "Incorrect coordinates";
 
 }
+function multiplicity_3($n1,$n2)
+{
+  if($n1%3==0&&$n2%3==0&&$n2!=0)
+      echo "<span style='color:blueviolet;font-size: 12px'>Сумма чисел, кратных 3=".($n1+$n2)."<br/>";
+  elseif ($n2!=0)
+      echo "<span style='color:brown;font-size: 12px'>Результат деления первого числа на второе=".($n1/$n2)."<br/>";
+  elseif ($n2==0)
+      echo "<span style='color:red;font-size: 12px'>Некорректный ввод данных!!!"."<br/>";
+
+}
