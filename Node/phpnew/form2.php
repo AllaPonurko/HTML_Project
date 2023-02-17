@@ -1,5 +1,5 @@
 <?php
-$n=1;
+$n=0;
 echo "Session_id="."$n"."<br/>";
 if(!isset($_POST['submit'])&&$n==0)
 {
@@ -17,5 +17,9 @@ elseif ($n==1)
 {
     echo '<h2>You are already registered</h2>'.'<br/>';
     echo '<p><input type="submit" name="submit2"value="Login"></p>';
+}
+else
+{
+    echo '<h2>Action undefinded</h2>'.'<br/>';
 }
 ?>
